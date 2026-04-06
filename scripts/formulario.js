@@ -5,7 +5,6 @@ document.getElementById("formAdocao").addEventListener("submit", function (e) {
     if(nome.length < 3) return alert("Nome Inválido");
 
   let email = document.getElementById("email").value;
-    if(email.)
   let telefone = document.getElementById("telefone").value;
     if(telefone.length < 9 ) return alert("Nome Inválido");
   let cpf = document.getElementById("cpf").value;
