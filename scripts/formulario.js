@@ -14,7 +14,9 @@ document.getElementById("formAdocao").addEventListener("submit", function (e) {
   let motivos = document.getElementById("motivo").value;
   let aceito = document.getElementById("aceito");
 
-
+  // lista de cpfs duplicados //
+  let cpfduplicado1 = 13184398910;
+  let cpfduplicado2 = 13218599011;
 
   //Regras de validação
 
@@ -33,6 +35,10 @@ document.getElementById("formAdocao").addEventListener("submit", function (e) {
 
   //CPF//
   if (!cpf === "") return alert("Digite um CPF");
+
+  if(cpf == cpfduplicado1 || cpfduplicado2) {
+
+  }
 
   //Idade//
   if (idade ===""){
@@ -63,6 +69,7 @@ document.getElementById("formAdocao").addEventListener("submit", function (e) {
   if(!quintal){
     return alert("Escolha se você tem ou não um quintal.");
   }
+
   //Pets//
   if(!pets){
     return alert("Escolha se você já teve ou nunca teve um pet.");
@@ -75,12 +82,17 @@ document.getElementById("formAdocao").addEventListener("submit", function (e) {
   //Horas//
   if(horas < 0 || horas > 24){
     return alert("Informe uma quantidade de horas válida.");
-  } else if (horas > 8) {
-    return alert("Você deve contratar uma baba para cuidar do seu cachorro caso queira adota-lo ainda.");
+  } else {
+      let resposta = prompt("Justifique o porque de você ficar tanto tempo fora de casa!");
+        if(resposta === ""){
+          return alert("Você não pode simplesmente não escrever nada.")
+        } else if (resposta.length < 3){
+          return alert("Digite algo válido!");
+        } else {
+          return alert("Vamos ver se você pode realizar essa adoção!");
+        }
+    }
   }
-    
-  //Horas//
-  if(horas > 24 || horas < 0) return alert("Insira um horario válido!");
 
   //Motivos//
   if(motivos.length < 10) return alert("Seu motivo deve ter mais que 10 caracteres.");
@@ -91,4 +103,6 @@ document.getElementById("formAdocao").addEventListener("submit", function (e) {
     return;
   }
 
+
+  document.getElementById("resultado").innerHTML = "Cadastro realizado com sucesso!<br>" + "Nome: " + nome;
 });
